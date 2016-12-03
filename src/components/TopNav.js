@@ -21,10 +21,9 @@ export default class TopNav extends React.Component {
           <bs.Navbar.Collapse>
               <bs.Nav>
                 <bs.NavItem>Home</bs.NavItem>
+                <bs.NavItem>Schedules</bs.NavItem>
+                <bs.NavItem>Alerts</bs.NavItem>
               </bs.Nav>
-            <bs.Nav pullRight>
-              <bs.MenuItem>Login</bs.MenuItem>
-            </bs.Nav>
           </bs.Navbar.Collapse>
       </bs.Navbar>
     )
