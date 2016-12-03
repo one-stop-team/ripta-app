@@ -1,13 +1,20 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
+import {
+  Col,
+  ControlLabel,
+  FormControl,
+  FormGroup,
+  Row
+} from 'react-bootstrap'
 
 import logo from '../images/ripta_logo.png'
 
 export default class NextBuses extends React.Component {
   constructor(props) {
     super(props)
+    this.handleChange = this.handleChange.bind(this)
     this.state = {
-      stopId: "13705",
+      stopId: "17045",
       stops: [],
       tripUpdates: []
     }
@@ -28,6 +35,10 @@ export default class NextBuses extends React.Component {
 
   }
 
+  handleChange(evt) {
+    this.setState({ stopId: evt.target.value.toString()})
+  }
+
   getStopTimeUpdates() {
     const buses = this.state.tripUpdates.map((tripUpdate) => {
       const stopUpdate = tripUpdate.trip_update.stop_time_update
@@ -45,30 +56,38 @@ export default class NextBuses extends React.Component {
 
   render() {
     const stopTimeUpdates = this.getStopTimeUpdates()
-    console.log('tripUpdates', this.state.tripUpdates)
-    console.log('stopTimeUpdates', stopTimeUpdates)
-    console.log('stops', this.state.stops)
-
     const stopName = this.getStopName(this.state.stopId)
 
     return (
-      <Row>
-        <Col xs={12}>
-          <b>{this.state.stopId + ': ' + stopName}</b>
-          <ul>
-            {stopTimeUpdates.map(update => {
-              return <li>foo</li>
-            }
-            )}
-          </ul>
-        </Col>
-      </Row>
+      <div>
+        <Row>
+          <Col xs={12}>
+            <FormGroup controlId="formControlsSelect">
+              <ControlLabel>Select a stop</ControlLabel>
+              <FormControl componentClass="select" placeholder="select"
+                onChange={this.handleChange}>
+                <option value="">Select a stop</option>
+                {this.state.stops.map(stop => (
+                  <option value={stop.stop_id}>{stop.stop_name}</option>
+                ))}
+              </FormControl>
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <b>{this.state.stopId + ': ' + stopName}</b>
+            <ul>
+              {stopTimeUpdates
+                .filter(update => update)
+                .map(update => (
+                  <li>Arrives at: {new Date(update.arrival.time).toString()}</li>
+                )
+                )}
+            </ul>
+          </Col>
+        </Row>
+      </div>
     )
   }
 }
-
-//  if (update && update.arrival) {
-//                 return <li>{`${update.arrival.time}: (delayed ${update.arrival.delay} seconds)`}</li>
-//               } else {
-//                 return null
-//               }
