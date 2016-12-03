@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
+import * as bs from 'react-bootstrap'
+
+import TopNav from './components/TopNav'
 import logo from './images/ripta_logo.png';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="RIPTA" />
-          <h2>Welcome to RIPTA</h2>
+      <div id="shell" className="container-fluid">
+        <TopNav />
+        <div id="main-content">
+          <bs.Grid fluid style={{ marginTop: '20px' }}>
+            <TopNav />
+            <div>
+              <img src={logo} alt='RIPTA'/>
+            </div>
+          </bs.Grid>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
-    );
+    )
   }
 }
 
