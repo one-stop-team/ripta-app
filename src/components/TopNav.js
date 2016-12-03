@@ -1,7 +1,7 @@
 import React from 'react'
 import * as bs from 'react-bootstrap'
 
-import logo from '../images/tripplanner.png'
+import logo from '../images/ripta_logo.png'
 
 const LinkContainer = ({children}) => (
   <span>{children}</span>
@@ -9,7 +9,6 @@ const LinkContainer = ({children}) => (
 
 export default class TopNav extends React.Component {
   render() {
-    const { isAuthenticated, isSupplier, isBuyer } = this.props
     return (
       <bs.Navbar fixedTop fluid>
         <bs.Navbar.Header>
@@ -21,7 +20,7 @@ export default class TopNav extends React.Component {
 
           <bs.Navbar.Collapse>
               <bs.Nav>
-                <bs.NavItem>Dashboard</bs.NavItem>
+                <bs.NavItem>Home</bs.NavItem>
               </bs.Nav>
             <bs.Nav pullRight>
               <bs.MenuItem>Login</bs.MenuItem>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as bs from 'react-bootstrap'
 
 import TopNav from './components/TopNav'
-import logo from './images/ripta_logo.png';
+import BusList from './components/BusList'
 import './App.css';
 
 class App extends Component {
@@ -13,9 +13,7 @@ class App extends Component {
         <div id="main-content">
           <bs.Grid fluid style={{ marginTop: '20px' }}>
             <TopNav />
-            <div>
-              <img src={logo} alt='RIPTA'/>
-            </div>
+            <BusList />
           </bs.Grid>
         </div>
       </div>
