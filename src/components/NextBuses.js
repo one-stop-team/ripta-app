@@ -67,7 +67,9 @@ export default class NextBuses extends React.Component {
               <FormControl componentClass="select" placeholder="select"
                 onChange={this.handleChange}>
                 <option value="">Select a stop</option>
-                {this.state.stops.map(stop => (
+                {this.state.stops
+                  .sort((a,b) => a.stop_name < b.stop_name)
+                  .map(stop => (
                   <option value={stop.stop_id}>{stop.stop_name}</option>
                 ))}
               </FormControl>
@@ -81,7 +83,9 @@ export default class NextBuses extends React.Component {
               {stopTimeUpdates
                 .filter(update => update)
                 .map(update => (
-                  <li>Arrives at: {new Date(update.arrival.time).toString()}</li>
+                  <li>Arrives at: {new Date(update.arrival.time).toString()}
+                    {' '}Delayed: {(update.arrival.delay/60)} mins
+                  </li>
                 )
                 )}
             </ul>
