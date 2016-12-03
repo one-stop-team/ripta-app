@@ -7,13 +7,16 @@ import {
   Row
 } from 'react-bootstrap'
 
+import routes from '../routes.json'
 import logo from '../images/ripta_logo.png'
 
 export default class NextBuses extends React.Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
+    this.handleRouteChange = this.handleRouteChange.bind(this)
     this.state = {
+      routeNumber: "1",
       stopId: "17045",
       stops: [],
       tripUpdates: []
@@ -21,13 +24,13 @@ export default class NextBuses extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/api/tripupdates/route/34')
+    fetch(`http://localhost:8000/api/tripupdates/route/${this.state.routeNumber}`)
       .then(response => response.json())
       .then(json => {
         this.setState({ tripUpdates: json.entity })
       })
 
-    fetch('http://localhost:8000/api/route/34/stops')
+    fetch(`http://localhost:8000/api/route/${this.state.routeNumber}/stops`)
       .then(response => response.json())
       .then(json => {
         this.setState({ stops: json })
@@ -37,6 +40,10 @@ export default class NextBuses extends React.Component {
 
   handleChange(evt) {
     this.setState({ stopId: evt.target.value.toString()})
+  }
+
+  handleRouteChange(evt) {
+    this.setState({ routeNumber: evt.target.value.toString()})
   }
 
   getStopTimeUpdates() {
@@ -62,7 +69,19 @@ export default class NextBuses extends React.Component {
       <div>
         <Row>
           <Col xs={12}>
-            <FormGroup controlId="formControlsSelect">
+            <FormGroup controlId="routes">
+              <ControlLabel>Select a route</ControlLabel>
+              <FormControl componentClass="select" placeholder="select"
+                onChange={this.handleRouteChange}>
+                <option value="">Select a route</option>
+                {routes
+                  .map(route => (
+                  <option value={route.route_id}>{route.route_long_name}</option>
+                ))}
+              </FormControl>
+            </FormGroup>
+
+            <FormGroup controlId="stops">
               <ControlLabel>Select a stop</ControlLabel>
               <FormControl componentClass="select" placeholder="select"
                 onChange={this.handleChange}>
