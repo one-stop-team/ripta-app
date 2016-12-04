@@ -101,27 +101,55 @@ export default class NextBuses extends React.Component {
           </Col>
         </Row>
         <Row>
+            <div className="panel-heading">
+              <h3 className="panel-title">Sunday, December 4, 2016</h3>
+              <p>Last Update: 2:45 p.m.</p>
+            </div>
+
+        </Row>
+        <Row>
           <Col xs={12}>
             <b>{this.state.stopId + ': ' + stopName}</b>
-            <ul>
               {stopTimeUpdates
                 .filter(update => update)
                 .map(update => (
-                <ul>
-                    <li>Next bus is in: {(update.arrival.time - new Date()
-                        .getTime()/1000)/60|0} minutes
-                    </li>
-                    <li>This bus will arrive at:
-                        {new Date(update.arrival.time * 1000).toString()}
-                    </li>
-                    <li>This bus is delayed by:
-                        {(update.arrival.delay/60)} minutes
-                    </li>
-
-                </ul>
+                    <div className="panel panel-success">
+                      <div className="panel-heading">
+                        <span className="panel-title">
+                          <span className="label label-primary">
+                            <i className="fa fa-bus" aria-hidden="true"></i> 17
+                          </span> #675
+                        </span>
+                        <span className="badge pull-right">On time</span>
+                      </div>
+                      <div className="container-fluid">
+                        <div className="row">
+                        <div className="col-sm-4">
+                            <i className="fa fa-bus" aria-hidden="true"></i>
+                            <b>Time Until Next Bus</b>
+                            <br></br>
+                            {(update.arrival.time - new Date()
+                                .getTime()/1000)/60|0} minutes
+                          </div>
+                        <div className="col-sm-4">
+                            <i className="fa fa-road" aria-hidden="true"></i>
+                            <b>Travel duration</b>
+                            <br></br>
+                            20 minutes
+                          </div>
+                        <div className="col-sm-4">
+                            <i className="fa fa-map-marker" aria-hidden="true"></i>
+                            <b>Destination</b>
+                            <br></br>
+                            Kennedy Plaza
+                            <br></br>
+                            7:20 p.m.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 )
                 )}
-            </ul>
           </Col>
         </Row>
       </div>
