@@ -18,41 +18,6 @@ class App extends Component {
 			{/*<BusList />*/}
             <NextBuses />
           </bs.Grid>
-
-          <div className="panel panel-danger">
-            <div className="panel-heading">
-              <span className="panel-title">
-                <span className="label label-success">
-                  <i className="fa fa-bus" aria-hidden="true"></i> 33
-                </span> #324
-              </span>
-              <span className= "badge pull-right">20 min delayed</span>
-            </div>
-            <div className="container-fluid">
-              <div className="row">
-              <div className="col-sm-4">
-                  <i className="fa fa-bus" aria-hidden="true"></i>
-                  <b> Time Until Next Bus</b>
-                  <br></br>
-                  45 minutes
-                </div>
-              <div className="col-sm-4">
-                  <i className="fa fa-road" aria-hidden="true"></i>
-                  <b>Travel duration</b>
-                  <br></br>
-                  15 minutes
-                </div>
-              <div className="col-sm-4">
-                  <i className="fa fa-map-marker" aria-hidden="true"></i>
-                  <b>Destination</b>
-                  <br></br>
-                  Kennedy Plaza
-                  <br></br>
-                  7:40 p.m.
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     )
