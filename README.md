@@ -2,6 +2,8 @@
 
 This is the app created by the OneStop team for HackRI 2016, based on the RIPTA APIs.
 
+[Team One Stop Presentation](https://docs.google.com/presentation/d/19skrGYMgb49oNJhvdhbHdiLXl1csVx8YHcKNK8pklA0/edit?usp=sharing)
+
 ## Team members
 
 - Achmed - beginner
