@@ -29,13 +29,17 @@ export default class NextBuses extends React.Component {
       .then(json => {
         this.setState({ tripUpdates: json.entity })
       })
+    
+    this.getStopsByRoute()
+  }
 
+  getStopsByRoute() {
+    console.log(this.state.routeNumber)
     fetch(`http://localhost:8000/api/route/${this.state.routeNumber}/stops`)
       .then(response => response.json())
       .then(json => {
         this.setState({ stops: json })
       })
-
   }
 
   handleChange(evt) {
@@ -43,7 +47,9 @@ export default class NextBuses extends React.Component {
   }
 
   handleRouteChange(evt) {
-    this.setState({ routeNumber: evt.target.value.toString()})
+    this.setState({ routeNumber: evt.target.value.toString()}, function() {
+      this.getStopsByRoute()
+    })
   }
 
   getStopTimeUpdates() {
@@ -87,7 +93,6 @@ export default class NextBuses extends React.Component {
                 onChange={this.handleChange}>
                 <option value="">Select a stop</option>
                 {this.state.stops
-                  .sort((a,b) => a.stop_name < b.stop_name)
                   .map(stop => (
                   <option value={stop.stop_id}>{stop.stop_name}</option>
                 ))}
