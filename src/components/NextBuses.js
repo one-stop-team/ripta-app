@@ -29,7 +29,7 @@ export default class NextBuses extends React.Component {
       .then(json => {
         this.setState({ tripUpdates: json.entity })
       })
-    
+
     this.getStopsByRoute()
   }
 
@@ -71,9 +71,6 @@ export default class NextBuses extends React.Component {
     const stopTimeUpdates = this.getStopTimeUpdates()
     const stopName = this.getStopName(this.state.stopId)
 
-//    var displayYear = new update.arrival.time.substr(0,3)
-//    var displayMonth = new update.arrival.time.substr(4,5)
-
     return (
       <div>
         <Row>
@@ -112,7 +109,7 @@ export default class NextBuses extends React.Component {
                 .map(update => (
                 <ul>
                     <li>Next bus is in: {(update.arrival.time - new Date()
-                        .getTime()/1000)/60} minutes
+                        .getTime()/1000)/60|0} minutes
                     </li>
                     <li>This bus will arrive at:
                         {new Date(update.arrival.time * 1000).toString()}
