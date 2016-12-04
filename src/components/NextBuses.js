@@ -78,7 +78,7 @@ export default class NextBuses extends React.Component {
             <FormGroup controlId="routes">
               <ControlLabel>Select a route</ControlLabel>
               <FormControl componentClass="select" placeholder="select"
-                onChange={this.handleRouteChange}>
+                onChange={this.handleRouteChange} value={this.state.routeNumber}>
                 <option value="">Select a route</option>
                 {routes
                   .map(route => (
@@ -90,7 +90,7 @@ export default class NextBuses extends React.Component {
             <FormGroup controlId="stops">
               <ControlLabel>Select a stop</ControlLabel>
               <FormControl componentClass="select" placeholder="select"
-                onChange={this.handleChange}>
+                onChange={this.handleChange} value={this.state.stopId}>
                 <option value="">Select a stop</option>
                 {this.state.stops
                   .map(stop => (
