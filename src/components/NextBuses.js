@@ -65,6 +65,9 @@ export default class NextBuses extends React.Component {
     const stopTimeUpdates = this.getStopTimeUpdates()
     const stopName = this.getStopName(this.state.stopId)
 
+//    var displayYear = new update.arrival.time.substr(0,3)
+//    var displayMonth = new update.arrival.time.substr(4,5)
+
     return (
       <div>
         <Row>
@@ -102,9 +105,18 @@ export default class NextBuses extends React.Component {
               {stopTimeUpdates
                 .filter(update => update)
                 .map(update => (
-                  <li>Arrives at: {new Date(update.arrival.time).toString()}
-                    {' '}Delayed: {(update.arrival.delay/60)} mins
-                  </li>
+                <ul>
+                    <li>Next bus is in: {(update.arrival.time - new Date()
+                        .getTime()/1000)/60} minutes
+                    </li>
+                    <li>This bus will arrive at:
+                        {new Date(update.arrival.time * 1000).toString()}
+                    </li>
+                    <li>This bus is delayed by:
+                        {(update.arrival.delay/60)} minutes
+                    </li>
+
+                </ul>
                 )
                 )}
             </ul>
