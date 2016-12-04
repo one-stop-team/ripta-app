@@ -15,7 +15,7 @@ class App extends Component {
         <div id="main-content">
           <bs.Grid fluid style={{ marginTop: '20px' }}>
             <TopNav />
-            <BusList />
+			{/*<BusList />*/}
             <NextBuses />
           </bs.Grid>
         </div>
