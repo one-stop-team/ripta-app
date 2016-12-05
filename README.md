@@ -6,7 +6,7 @@ This is the app created by the OneStop team for HackRI 2016, based on the RIPTA 
 
 ## Team members
 
-- Achmed - beginner
+- Ahmed - beginner
 - Ben
 - Chris - beginner
 - Claudia - beginner
